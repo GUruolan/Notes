@@ -75,5 +75,33 @@ ReactDOM.render(
                 -> 执行componentWillUnmount()，清除定时器
 */
 ```
+__state__：（1）不能直接给this.state.变量名 赋值来更新state；需要使用setstate({})函数，函数参数为一个对象，对象中包含需要更新的键值对。（setstate是异步执行的）
+```js
+// Wrong React可能会把多个setState调用合并，
+        //可能会造成连续的某几次累加，使用的setState是同一个值，从而结果也是同一个值。
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+```
+（2）state的更新会被合并，其实就是可以使用setstate单独修改变量，其他变量不受影响。
 
+（3）数据是向下流动的，其实就是state可以在类组件内部作为JSX的属性值传递到子组件中，子组件通过props接收。
+# 事件处理
+> <标签 事件名 = {事件处理函数名}> 内容 <\结束标签>
 
+其中事件名采用小驼峰式命名，事件处理函数往往声明为类的方法，由于类中的方法默认不会绑定this，所以需要在构造函数中绑定this。
+
+或者在回调中使用箭头函数
+> <标签 事件名 = {箭头函数}> 内容 <\结束标签>
+
+或者在回调中直接绑定
+> <标签 事件名 = {this.函数名.bind(this,其他参数)}> 内容 <\结束标签>
+
+向事件处理程序传递参数
+
+```js
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+//e 是一个合成事件，e 会被作为第二个参数传递。如果通过箭头函数的方式，事件对象必须显式的进行传递。
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+//而通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递。
+```
