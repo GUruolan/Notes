@@ -151,5 +151,6 @@ import React, { useState } from 'react'; //首先进行引入
 
 ### useEffect
 useEffect 会在每次渲染后都执行，相当于函数组件中的componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
-__用法__ ：参数为函数，React 会保存传递的函数，在执行 DOM 变化（挂载、更新、注销）后调用它。 effect 返回一个函数，React 将会在执行清除操作时调用它：
+
+__用法__ ：（1）effect接收一个函数为参数，React 会保存传递的函数，在执行 DOM 变化（挂载、更新、卸载）后调用它。（2） effect 传入的函数参数返回值为一个函数，React 将会在执行清除操作时调用返回值的函数：
 - 可以在 effect 中直接访问 state 变量（或其他 props）
