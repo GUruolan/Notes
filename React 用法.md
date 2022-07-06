@@ -2,6 +2,7 @@
 __用法__：用JSX语法编写值或表达式，为元素element赋值。
 
 __语法特征__：1.语法形式类似HTML，采用标签嵌套，标签可以为HTML5原生标签，也可以为自定义标签。但标签属性的写法与HTML5不同，采用驼峰命名的方式。
+> <标签 属性名 = 值/{JS代码}>内容
 
 2.JSX表达式中可使用大括号嵌套JS代码。
 
@@ -102,6 +103,7 @@ this.setState({
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 //e 是一个合成事件，e 会被作为第二个参数传递。如果通过箭头函数的方式，事件对象必须显式的进行传递。
+///事件处理函数不能通过返回 false 的方式阻止默认行为。你必须显式的使用 e.preventDefault。
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 //而通过 bind 的方式，事件对象以及更多的参数将会被隐式的进行传递。
 ```
