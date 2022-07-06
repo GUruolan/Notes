@@ -42,11 +42,11 @@ class Clock extends React.Component {
   componentDidMount() {               //生命周期函数，组件挂载后执行。
     this.timerID = setInterval(
       () => this.tick(),
-      1000                            //1000ms后执行
+      1000                            //每1000ms执行一次
     );
   }
 
-  componentWillUnmount() {
+  componentWillUnmount() {            //生命周期函数，组件将被注销时执行
     clearInterval(this.timerID);
   }
 
