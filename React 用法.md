@@ -70,5 +70,10 @@ ReactDOM.render(
   <Clock />,
   document.getElementById('root')
 );
+/*执行流程大致为 ：渲染Clock组件到根节点，this.state初始化 
+                -> 执行componentDidMount(），调用tick，更新state，重新渲染组件
+                -> 执行componentWillUnmount()，清除定时器
+*/
 ```
+
 
