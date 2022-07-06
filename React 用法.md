@@ -132,4 +132,24 @@ setTimeout(function() {
 
 - 数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。但不需要是全局唯一的。当生成两个不同的数组时，可以使用相同的 key 值。
 
+# Hooks
+在函数组件中使用state和生命周期函数。
+## useState
+相当于函数组件中的state
+```js
 
+import React, { useState } from 'react'; //首先进行引入
+
+[ver, setVer] = useState(0);
+// ver为定义的变量
+// setVar为更改变量值的函数
+// useState传入参数作为变量的初始值
+
+// 函数组件内部可以直接使用var和setVar
+```
+
+
+### useEffect
+useEffect 会在每次渲染后都执行，相当于函数组件中的componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
+__用法__ ：参数为函数，React 会保存传递的函数，在执行 DOM 变化（挂载、更新、注销）后调用它。 effect 返回一个函数，React 将会在执行清除操作时调用它：
+- 可以在 effect 中直接访问 state 变量（或其他 props）
