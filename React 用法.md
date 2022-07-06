@@ -92,6 +92,17 @@ this.setState({
 ## 受控组件
 
 对于一些\<input>、 \<textarea> 和 \<select>等表单元素会根据用户的输入更新value等值。以value为例，React中通过使用setState函数将event.target.value赋值给value，再在组件内部使用this.state.value调用实现对value的控制，也可以通过state设置value初始值。简而言之就是对用户输入值的控制。
+
+在受控组件上指定 value 的 prop 会阻止用户更改输入。如果你指定了 value，但输入仍可编辑，则可能是你意外地将value 设置为 undefined 或 null。
+
+```js
+ReactDOM.render(<input value="hi" />, mountNode); //用户不可编辑
+
+setTimeout(function() {
+  ReactDOM.render(<input value={null} />, mountNode); //用户可编辑
+}, 1000);
+```
+
 # 事件处理
 > <标签 事件名 = {事件处理函数名}> 内容 <\结束标签>
 
