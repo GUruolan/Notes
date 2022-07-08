@@ -134,6 +134,7 @@ setTimeout(function() {
 
 # Hooks
 在函数组件中使用state和生命周期函数。
+其他自定义Hooks：https://ahooks.js.org/zh-CN/hooks/use-request/index
 ## useState
 相当于函数组件中的state
 ```js
@@ -154,3 +155,6 @@ useEffect 会在每次渲染后都执行，相当于函数组件中的componentD
 
 __用法__ ：（1）effect接收一个函数为参数，React 会保存传递的函数，在执行 DOM 变化（挂载、更新、卸载）后调用它。（2） effect 传入的函数参数返回值为一个函数，React 将会在执行清除操作时调用返回值的函数：
 - 可以在 effect 中直接访问 state 变量（或其他 props）
+
+# pureComponent
+当使用component时，父组件的state或prop更新时，无论子组件的state、prop是否更新，都会触发子组件的更新，这会形成很多没必要的render，浪费很多性能；pureComponent的优点在于：pureComponent在shouldComponentUpdate只进行浅层的比较，只要外层对象没变化，就不会触发render,减少了不必要的render，
